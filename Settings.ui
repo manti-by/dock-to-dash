@@ -2343,7 +2343,7 @@
                 <property name="receives_default">1</property>
                 <property name="halign">center</property>
 
-                <property name="uri">https://micheleg.github.io/dash-to-dock/</property>
+                <property name="uri">https://micheleg.github.io/dock-to-dash/</property>
               </object>
             </child>
             <child>
