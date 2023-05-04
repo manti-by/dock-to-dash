@@ -14,7 +14,7 @@ const {
 
 // Use __ () and N__() for the extension gettext domain, and reuse
 // the shell domain with the default _() and N_()
-const Gettext = imports.gettext.domain('dashtodock');
+const Gettext = imports.gettext.domain('docktodash');
 const __ = Gettext.gettext;
 const N__ = e => e;
 

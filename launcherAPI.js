@@ -9,7 +9,7 @@ const {dbusmenuUtils: DbusmenuUtils} = Me.imports;
 
 const Dbusmenu = DbusmenuUtils.haveDBusMenu();
 
-var LauncherEntryRemoteModel = class DashToDockLauncherEntryRemoteModel {
+var LauncherEntryRemoteModel = class DockToDashkLauncherEntryRemoteModel {
   constructor() {
     this._entrySourceStacks = new Map();
     this._remoteMaps = new Map();
@@ -169,7 +169,7 @@ const launcherEntryDefaults = Object.freeze({
   'progress-visible': false,
 });
 
-const LauncherEntry = class DashToDockLauncherEntry {
+const LauncherEntry = class DockToDashkLauncherEntry {
   constructor() {
     this._connections = new Map();
     this._handlers = new Map();
@@ -241,7 +241,7 @@ for (const [name, defaultValue] of Object.entries(launcherEntryDefaults)) {
   }
 }
 
-const PropertySourceStack = class DashToDockPropertySourceStack {
+const PropertySourceStack = class DockToDashkPropertySourceStack {
   constructor(target, bottom) {
     this.target = target;
     this._bottom = bottom;

@@ -14,7 +14,7 @@ var dockManager;
  *
  */
 function init() {
-  ExtensionUtils.initTranslations('dashtodock');
+  ExtensionUtils.initTranslations('docktodash');
 }
 
 /**

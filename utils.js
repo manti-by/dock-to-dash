@@ -31,7 +31,7 @@ const GENERIC_KEY = Symbol('generic');
  * Simplify global signals and function injections handling
  * abstract class
  */
-const BasicHandler = class DashToDockBasicHandler {
+const BasicHandler = class DockToDashkBasicHandler {
   static get genericKey() {
     return GENERIC_KEY;
   }
@@ -160,7 +160,7 @@ const BasicHandler = class DashToDockBasicHandler {
 /**
  * Manage global signals
  */
-var GlobalSignalsHandler = class DashToDockGlobalSignalHandler extends BasicHandler {
+var GlobalSignalsHandler = class DockToDashkGlobalSignalHandler extends BasicHandler {
   _create(object, event, callback, flags = SignalsHandlerFlags.NONE) {
     if (!object)
       throw new Error('Impossible to connect to an invalid object');
@@ -208,7 +208,7 @@ var GlobalSignalsHandler = class DashToDockGlobalSignalHandler extends BasicHand
 /**
  * Color manipulation utilities
  */
-var ColorUtils = class DashToDockColorUtils {
+var ColorUtils = class DockToDashkColorUtils {
   // Darken or brigthen color by a fraction dlum
   // Each rgb value is modified by the same fraction.
   // Return "#rrggbb" string
@@ -321,7 +321,7 @@ var ColorUtils = class DashToDockColorUtils {
  * Manage function injection: both instances and prototype can be overridden
  * and restored
  */
-var InjectionsHandler = class DashToDockInjectionsHandler extends BasicHandler {
+var InjectionsHandler = class DockToDashkInjectionsHandler extends BasicHandler {
   _create(object, name, injectedFunction) {
     const original = object[name];
 
@@ -344,7 +344,7 @@ var InjectionsHandler = class DashToDockInjectionsHandler extends BasicHandler {
  * Manage vfunction injection: both instances and prototype can be overridden
  * and restored
  */
-var VFuncInjectionsHandler = class DashToDockVFuncInjectionsHandler extends BasicHandler {
+var VFuncInjectionsHandler = class DockToDashkVFuncInjectionsHandler extends BasicHandler {
   _create(prototype, name, injectedFunction) {
     const original = prototype[`vfunc_${name}`];
     if (!(original instanceof Function))
@@ -385,7 +385,7 @@ var VFuncInjectionsHandler = class DashToDockVFuncInjectionsHandler extends Basi
  * Manage properties injection: both instances and prototype can be overridden
  * and restored
  */
-var PropertyInjectionsHandler = class DashToDockPropertyInjectionsHandler extends BasicHandler {
+var PropertyInjectionsHandler = class DockToDashkPropertyInjectionsHandler extends BasicHandler {
   _create(instance, name, injectedPropertyDescriptor) {
     if (!(name in instance))
       throw new Error(`Object ${instance} has no '${name}' property`);
@@ -495,7 +495,7 @@ function splitHandler(handler) {
   });
 }
 
-var IconTheme = class DashToDockIconTheme {
+var IconTheme = class DockToDashkIconTheme {
   constructor() {
     if (St.IconTheme) {
       this._iconTheme = new St.IconTheme();

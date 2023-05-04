@@ -43,7 +43,7 @@ var PositionStyleClass = Object.freeze([
 /**
  * Manage theme customization and custom theme support
  */
-var ThemeManager = class DashToDockThemeManager {
+var ThemeManager = class DockToDashkThemeManager {
   constructor(dock) {
     this._signalsHandler = new Utils.GlobalSignalsHandler(this);
     this._bindSettingsChanges();
@@ -198,9 +198,9 @@ var ThemeManager = class DashToDockThemeManager {
     const {settings} = Docking.DockManager;
 
     if (settings.applyCustomTheme)
-      this._actor.add_style_class_name('dashtodock');
+      this._actor.add_style_class_name('docktodash');
     else
-      this._actor.remove_style_class_name('dashtodock');
+      this._actor.remove_style_class_name('docktodash');
 
     if (settings.customThemeShrink)
       this._actor.add_style_class_name('shrink');
@@ -321,7 +321,7 @@ Signals.addSignalMethods(ThemeManager.prototype);
  * https://git.gnome.org/browse/gnome-shell/commit/?id=447bf55e45b00426ed908b1b1035f472c2466956
  * Transparency when free-floating
  */
-var Transparency = class DashToDockTransparency {
+var Transparency = class DockToDashkTransparency {
   constructor(dock) {
     this._dash = dock.dash;
     this._actor = this._dash._container;
@@ -532,7 +532,7 @@ var Transparency = class DashToDockTransparency {
   _getAlphas() {
     // Create dummy object and add to the uiGroup to get it to the stage
     const dummyObject = new St.Bin({
-      name: 'dashtodockContainer',
+      name: 'docktodashContainer',
     });
     Main.uiGroup.add_child(dummyObject);
 

@@ -14,7 +14,7 @@ const Signals = imports.signals;
 
 // Use __ () and N__() for the extension gettext domain, and reuse
 // the shell domain with the default _() and N_()
-const Gettext = imports.gettext.domain('dashtodock');
+const Gettext = imports.gettext.domain('docktodash');
 const __ = Gettext.gettext;
 const N__ = e => e;
 
@@ -192,7 +192,7 @@ function setShortcut(settings) {
 
 var Settings = GObject.registerClass({
   Implements: [Gtk.BuilderScope],
-}, class DashToDockSettings extends GObject.Object {
+}, class DockToDashkSettings extends GObject.Object {
   _init() {
     super._init();
 

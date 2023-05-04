@@ -37,7 +37,7 @@ const MAX_PREVIEW_GENERATION_ATTEMPTS = 15;
 
 const MENU_MARGINS = 10;
 
-var WindowPreviewMenu = class DashToDockWindowPreviewMenu extends PopupMenu.PopupMenu {
+var WindowPreviewMenu = class DockToDashkWindowPreviewMenu extends PopupMenu.PopupMenu {
   constructor(source) {
     super(source, 0.5, Utils.getPosition());
 
@@ -95,11 +95,11 @@ var WindowPreviewMenu = class DashToDockWindowPreviewMenu extends PopupMenu.Popu
   }
 };
 
-var WindowPreviewList = class DashToDockWindowPreviewList extends PopupMenu.PopupMenuSection {
+var WindowPreviewList = class DockToDashkWindowPreviewList extends PopupMenu.PopupMenuSection {
   constructor(source) {
     super();
     this.actor = new St.ScrollView({
-      name: 'dashtodockWindowScrollview',
+      name: 'docktodashWindowScrollview',
       hscrollbar_policy: St.PolicyType.NEVER,
       vscrollbar_policy: St.PolicyType.NEVER,
       overlay_scrollbars: true,
@@ -111,7 +111,7 @@ var WindowPreviewList = class DashToDockWindowPreviewList extends PopupMenu.Popu
     const position = Utils.getPosition();
     this.isHorizontal = position === St.Side.BOTTOM || position === St.Side.TOP;
     this.box.set_vertical(!this.isHorizontal);
-    this.box.set_name('dashtodockWindowList');
+    this.box.set_name('docktodashWindowList');
     this.actor.add_actor(this.box);
     this.actor._delegate = this;
 
@@ -336,7 +336,7 @@ var WindowPreviewMenuItem = GObject.registerClass(
 
       // We don't want this: it adds spacing on the left of the item.
       this.remove_child(this._ornamentLabel);
-      this.add_style_class_name('dashtodock-app-well-preview-menu-item');
+      this.add_style_class_name('docktodash-app-well-preview-menu-item');
       this.add_style_class_name(Theming.PositionStyleClass[position]);
       if (Docking.DockManager.settings.customThemeShrink)
         this.add_style_class_name('shrink');

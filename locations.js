@@ -22,7 +22,7 @@ const {
 
 // Use __ () and N__() for the extension gettext domain, and reuse
 // the shell domain with the default _() and N_()
-const Gettext = imports.gettext.domain('dashtodock');
+const Gettext = imports.gettext.domain('docktodash');
 const __ = Gettext.gettext;
 const N__ = e => e;
 
@@ -1249,7 +1249,7 @@ function unWrapFileManagerApp() {
  * This class maintains a Shell.App representing the Trash and keeps it
  * up-to-date as the trash fills and is emptied over time.
  */
-var Trash = class DashToDockTrash {
+var Trash = class DockToDashkTrash {
   destroy() {
     this._trashApp?.destroy();
   }
@@ -1275,7 +1275,7 @@ var Trash = class DashToDockTrash {
  * plugged into the system, and keeps the list of Apps up-to-date as
  * devices come and go and are mounted and unmounted.
  */
-var Removables = class DashToDockRemovables {
+var Removables = class DockToDashkRemovables {
   static initVolumePromises(object) {
     // TODO: This can be simplified using actual interface type when we
     // can depend on gjs 1.72

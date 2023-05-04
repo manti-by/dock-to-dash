@@ -214,14 +214,14 @@ const DockedDash = GObject.registerClass({
     'showing': {},
     'hiding': {},
   },
-}, class DashToDock extends St.Bin {
+}, class DockToDashk extends St.Bin {
   _init(params) {
     this._position = Utils.getPosition();
 
     // This is the centering actor
     super._init({
       ...params,
-      name: 'dashtodockContainer',
+      name: 'docktodashContainer',
       reactive: false,
       style_class: Theming.PositionStyleClass[this._position],
     });
@@ -293,7 +293,7 @@ const DockedDash = GObject.registerClass({
 
     // This is the actor whose hover status us tracked for autohide
     this._box = new St.BoxLayout({
-      name: 'dashtodockBox',
+      name: 'docktodashBox',
       reactive: true,
       track_hover: true,
     });
@@ -1402,7 +1402,7 @@ const DockedDash = GObject.registerClass({
  */
 const NUM_HOTKEYS = 10;
 
-const KeyboardShortcuts = class DashToDockKeyboardShortcuts {
+const KeyboardShortcuts = class DockToDashkKeyboardShortcuts {
   constructor() {
     this._signalsHandler = new Utils.GlobalSignalsHandler();
 
@@ -1561,7 +1561,7 @@ const KeyboardShortcuts = class DashToDockKeyboardShortcuts {
  * Some bits are around in other methods of other classes.
  * This class just take care of enabling/disabling the option.
  */
-const WorkspaceIsolation = class DashToDockWorkspaceIsolation {
+const WorkspaceIsolation = class DockToDashkWorkspaceIsolation {
   constructor() {
     const {settings} = DockManager;
 
@@ -1645,10 +1645,10 @@ const WorkspaceIsolation = class DashToDockWorkspaceIsolation {
 };
 
 
-var DockManager = class DashToDockDockManager {
+var DockManager = class DockToDashkDockManager {
   constructor() {
     if (Me.imports.extension.dockManager)
-      throw new Error('DashToDock has been already initialized');
+      throw new Error('DockToDashk has been already initialized');
 
     Me.imports.extension.dockManager = this;
 
@@ -2621,7 +2621,7 @@ Signals.addSignalMethods(DockManager.prototype);
 
 // This class drives long-running icon animations, to keep them running in sync
 // with each other, and to save CPU by pausing them when the dock is hidden.
-var IconAnimator = class DashToDockIconAnimator {
+var IconAnimator = class DockToDashkIconAnimator {
   constructor(actor) {
     this._count = 0;
     this._started = false;

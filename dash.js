@@ -134,7 +134,7 @@ var DockDash = GObject.registerClass({
     });
 
     this._dashContainer = new St.BoxLayout({
-      name: 'dashtodockDashContainer',
+      name: 'docktodashDashContainer',
       x_align: Clutter.ActorAlign.CENTER,
       y_align: Clutter.ActorAlign.CENTER,
       vertical: !this._isHorizontal,
@@ -143,7 +143,7 @@ var DockDash = GObject.registerClass({
     });
 
     this._scrollView = new St.ScrollView({
-      name: 'dashtodockDashScrollview',
+      name: 'docktodashDashScrollview',
       hscrollbar_policy: this._isHorizontal ? St.PolicyType.EXTERNAL : St.PolicyType.NEVER,
       vscrollbar_policy: this._isHorizontal ? St.PolicyType.NEVER : St.PolicyType.EXTERNAL,
       x_expand: this._isHorizontal,
