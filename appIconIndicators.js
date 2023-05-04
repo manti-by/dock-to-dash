@@ -38,7 +38,7 @@ const MAX_WINDOWS_CLASSES = 4;
  * obtained by composing the desired classes below based on the settings.
  *
  */
-var AppIconIndicator = class DockToDashkAppIconIndicator {
+var AppIconIndicator = class DockToDashAppIconIndicator {
   constructor(source) {
     this._indicators = [];
 
@@ -119,7 +119,7 @@ var AppIconIndicator = class DockToDashkAppIconIndicator {
 /*
  * Base class to be inherited by all indicators of any kind
 */
-var IndicatorBase = class DockToDashkIndicatorBase {
+var IndicatorBase = class DockToDashIndicatorBase {
   constructor(source) {
     this._source = source;
     this._signalsHandler = new Utils.GlobalSignalsHandler(this._source);
@@ -140,7 +140,7 @@ var IndicatorBase = class DockToDashkIndicatorBase {
  * providing some basic methods, variables definitions and their update,  css style classes handling.
  *
  */
-var RunningIndicatorBase = class DockToDashkRunningIndicatorBase extends IndicatorBase {
+var RunningIndicatorBase = class DockToDashRunningIndicatorBase extends IndicatorBase {
   constructor(source) {
     super(source);
 
@@ -228,7 +228,7 @@ var RunningIndicatorBase = class DockToDashkRunningIndicatorBase extends Indicat
 
 // We add a css class so third parties themes can limit their indicaor customization
 // to the case we do nothing
-var RunningIndicatorDefault = class DockToDashkRunningIndicatorDefault extends RunningIndicatorBase {
+var RunningIndicatorDefault = class DockToDashRunningIndicatorDefault extends RunningIndicatorBase {
   constructor(source) {
     super(source);
     this._source.add_style_class_name('default');
@@ -256,7 +256,7 @@ var IndicatorDrawingArea = GObject.registerClass(
     }
   });
 
-var RunningIndicatorDots = class DockToDashkRunningIndicatorDots extends RunningIndicatorBase {
+var RunningIndicatorDots = class DockToDashRunningIndicatorDots extends RunningIndicatorBase {
   constructor(source) {
     super(source);
 
@@ -432,7 +432,7 @@ var RunningIndicatorDots = class DockToDashkRunningIndicatorDots extends Running
 
 // Adapted from dash-to-panel by Jason DeRose
 // https://github.com/jderose9/dash-to-panel
-var RunningIndicatorCiliora = class DockToDashkRunningIndicatorCiliora extends RunningIndicatorDots {
+var RunningIndicatorCiliora = class DockToDashRunningIndicatorCiliora extends RunningIndicatorDots {
   _drawIndicator(cr) {
     if (this._source.running) {
       const size = Math.max(this._width / 20, this._borderWidth);
@@ -465,7 +465,7 @@ var RunningIndicatorCiliora = class DockToDashkRunningIndicatorCiliora extends R
 
 // Adapted from dash-to-panel by Jason DeRose
 // https://github.com/jderose9/dash-to-panel
-var RunningIndicatorSegmented = class DockToDashkRunningIndicatorSegmented extends RunningIndicatorDots {
+var RunningIndicatorSegmented = class DockToDashRunningIndicatorSegmented extends RunningIndicatorDots {
   _drawIndicator(cr) {
     if (this._source.running) {
       const size = Math.max(this._width / 20, this._borderWidth);
@@ -496,7 +496,7 @@ var RunningIndicatorSegmented = class DockToDashkRunningIndicatorSegmented exten
 
 // Adapted from dash-to-panel by Jason DeRose
 // https://github.com/jderose9/dash-to-panel
-var RunningIndicatorSolid = class DockToDashkRunningIndicatorSolid extends RunningIndicatorDots {
+var RunningIndicatorSolid = class DockToDashRunningIndicatorSolid extends RunningIndicatorDots {
   _drawIndicator(cr) {
     if (this._source.running) {
       const size = Math.max(this._width / 20, this._borderWidth);
@@ -523,7 +523,7 @@ var RunningIndicatorSolid = class DockToDashkRunningIndicatorSolid extends Runni
 
 // Adapted from dash-to-panel by Jason DeRose
 // https://github.com/jderose9/dash-to-panel
-var RunningIndicatorSquares = class DockToDashkRunningIndicatorSquares extends RunningIndicatorDots {
+var RunningIndicatorSquares = class DockToDashRunningIndicatorSquares extends RunningIndicatorDots {
   _drawIndicator(cr) {
     if (this._source.running) {
       const size = Math.max(this._width / 11, this._borderWidth);
@@ -551,7 +551,7 @@ var RunningIndicatorSquares = class DockToDashkRunningIndicatorSquares extends R
 
 // Adapted from dash-to-panel by Jason DeRose
 // https://github.com/jderose9/dash-to-panel
-var RunningIndicatorDashes = class DockToDashkRunningIndicatorDashes extends RunningIndicatorDots {
+var RunningIndicatorDashes = class DockToDashRunningIndicatorDashes extends RunningIndicatorDots {
   _drawIndicator(cr) {
     if (this._source.running) {
       const size = Math.max(this._width / 20, this._borderWidth);
@@ -581,7 +581,7 @@ var RunningIndicatorDashes = class DockToDashkRunningIndicatorDashes extends Run
 
 // Adapted from dash-to-panel by Jason DeRose
 // https://github.com/jderose9/dash-to-panel
-var RunningIndicatorMetro = class DockToDashkRunningIndicatorMetro extends RunningIndicatorDots {
+var RunningIndicatorMetro = class DockToDashRunningIndicatorMetro extends RunningIndicatorDots {
   constructor(source) {
     super(source);
     this._source.add_style_class_name('metro');
@@ -636,7 +636,7 @@ var RunningIndicatorMetro = class DockToDashkRunningIndicatorMetro extends Runni
   }
 };
 
-var RunningIndicatorBinary = class DockToDashkRunningIndicatorBinary extends RunningIndicatorDots {
+var RunningIndicatorBinary = class DockToDashRunningIndicatorBinary extends RunningIndicatorDots {
   _drawIndicator(cr) {
     // Draw the required numbers of dots
     const n = Math.min(15, this._source.windowsCount);
@@ -674,7 +674,7 @@ var RunningIndicatorBinary = class DockToDashkRunningIndicatorBinary extends Run
 /*
  * Unity like notification and progress indicators
  */
-var UnityIndicator = class DockToDashkUnityIndicator extends IndicatorBase {
+var UnityIndicator = class DockToDashUnityIndicator extends IndicatorBase {
   constructor(source) {
     super(source);
 
@@ -948,7 +948,7 @@ const DOMINANT_COLOR_ICON_SIZE = 64;
 
 // Compute dominant color frim the app icon.
 // The color is cached for efficiency.
-var DominantColorExtractor = class DockToDashkDominantColorExtractor {
+var DominantColorExtractor = class DockToDashDominantColorExtractor {
   constructor(app) {
     this._app = app;
   }

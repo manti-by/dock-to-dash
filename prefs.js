@@ -192,7 +192,7 @@ function setShortcut(settings) {
 
 var Settings = GObject.registerClass({
   Implements: [Gtk.BuilderScope],
-}, class DockToDashkSettings extends GObject.Object {
+}, class DockToDashSettings extends GObject.Object {
   _init() {
     super._init();
 

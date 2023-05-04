@@ -37,7 +37,7 @@ const MAX_PREVIEW_GENERATION_ATTEMPTS = 15;
 
 const MENU_MARGINS = 10;
 
-var WindowPreviewMenu = class DockToDashkWindowPreviewMenu extends PopupMenu.PopupMenu {
+var WindowPreviewMenu = class DockToDashWindowPreviewMenu extends PopupMenu.PopupMenu {
   constructor(source) {
     super(source, 0.5, Utils.getPosition());
 
@@ -95,7 +95,7 @@ var WindowPreviewMenu = class DockToDashkWindowPreviewMenu extends PopupMenu.Pop
   }
 };
 
-var WindowPreviewList = class DockToDashkWindowPreviewList extends PopupMenu.PopupMenuSection {
+var WindowPreviewList = class DockToDashWindowPreviewList extends PopupMenu.PopupMenuSection {
   constructor(source) {
     super();
     this.actor = new St.ScrollView({

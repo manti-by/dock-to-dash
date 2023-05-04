@@ -51,7 +51,7 @@ const ignoreApps = ['com.rastersoft.ding', 'com.desktop.ding'];
  * Intallihide object: emit 'status-changed' signal when the overlap of windows
  * with the provided targetBoxClutter.ActorBox changes;
  */
-var Intellihide = class DockToDashkIntellihide {
+var Intellihide = class DockToDashIntellihide {
   constructor(monitorIndex) {
     // Load settings
     this._monitorIndex = monitorIndex;

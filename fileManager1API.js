@@ -24,7 +24,7 @@ const Labels = Object.freeze({
  * The property is a map from window identifiers to a list of locations open in
  * the window.
  */
-var FileManager1Client = class DockToDashkFileManager1Client {
+var FileManager1Client = class DockToDashFileManager1Client {
   constructor() {
     this._signalsHandler = new Utils.GlobalSignalsHandler();
     this._cancellable = new Gio.Cancellable();

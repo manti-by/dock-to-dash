@@ -214,7 +214,7 @@ const DockedDash = GObject.registerClass({
     'showing': {},
     'hiding': {},
   },
-}, class DockToDashk extends St.Bin {
+}, class DockToDash extends St.Bin {
   _init(params) {
     this._position = Utils.getPosition();
 
@@ -1402,7 +1402,7 @@ const DockedDash = GObject.registerClass({
  */
 const NUM_HOTKEYS = 10;
 
-const KeyboardShortcuts = class DockToDashkKeyboardShortcuts {
+const KeyboardShortcuts = class DockToDashKeyboardShortcuts {
   constructor() {
     this._signalsHandler = new Utils.GlobalSignalsHandler();
 
@@ -1561,7 +1561,7 @@ const KeyboardShortcuts = class DockToDashkKeyboardShortcuts {
  * Some bits are around in other methods of other classes.
  * This class just take care of enabling/disabling the option.
  */
-const WorkspaceIsolation = class DockToDashkWorkspaceIsolation {
+const WorkspaceIsolation = class DockToDashWorkspaceIsolation {
   constructor() {
     const {settings} = DockManager;
 
@@ -1645,10 +1645,10 @@ const WorkspaceIsolation = class DockToDashkWorkspaceIsolation {
 };
 
 
-var DockManager = class DockToDashkDockManager {
+var DockManager = class DockToDashDockManager {
   constructor() {
     if (Me.imports.extension.dockManager)
-      throw new Error('DockToDashk has been already initialized');
+      throw new Error('DockToDash has been already initialized');
 
     Me.imports.extension.dockManager = this;
 
@@ -2621,7 +2621,7 @@ Signals.addSignalMethods(DockManager.prototype);
 
 // This class drives long-running icon animations, to keep them running in sync
 // with each other, and to save CPU by pausing them when the dock is hidden.
-var IconAnimator = class DockToDashkIconAnimator {
+var IconAnimator = class DockToDashIconAnimator {
   constructor(actor) {
     this._count = 0;
     this._started = false;
