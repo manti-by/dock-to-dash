@@ -153,44 +153,38 @@ var DockDash = GObject.registerClass({
 
     if (Docking.DockManager.settings.dockExtended) {
       if (!this._isHorizontal)
-        this._scrollView.y_align = Clutter.ActorAlign.START;
+        this._scrollView.y_align = Clutter.ActorAlign.CENTER;
       else
-        this._scrollView.x_align = Clutter.ActorAlign.START;
+        this._scrollView.x_align = Clutter.ActorAlign.CENTER;
     }
 
     this._scrollView.connect('scroll-event', this._onScrollEvent.bind(this));
-
-    const rtl = Clutter.get_default_text_direction() === Clutter.TextDirection.RTL;
-    this._box = new St.BoxLayout({
-      vertical: !this._isHorizontal,
-      clip_to_allocation: false,
-      ...!this._isHorizontal ? {layout_manager: new DockDashIconsVerticalLayout()} : {},
-      x_align: rtl ? Clutter.ActorAlign.END : Clutter.ActorAlign.START,
-      y_align: this._isHorizontal ? Clutter.ActorAlign.CENTER : Clutter.ActorAlign.START,
-      y_expand: !this._isHorizontal,
-      x_expand: this._isHorizontal,
-    });
-    this._box._delegate = this;
-    this._dashContainer.add_actor(this._scrollView);
-    this._scrollView.add_actor(this._box);
 
     this._showAppsIcon = new AppIcons.DockShowAppsIcon(this._position);
     this._showAppsIcon.show(false);
     this._showAppsIcon.icon.setIconSize(this.iconSize);
     this._showAppsIcon.x_expand = false;
     this._showAppsIcon.y_expand = false;
-    if (!this._isHorizontal)
-      this._showAppsIcon.y_align = Clutter.ActorAlign.START;
+
     this._hookUpLabel(this._showAppsIcon);
     this._showAppsIcon.connect('menu-state-changed', (_icon, opened) => {
       this._itemMenuStateChanged(this._showAppsIcon, opened);
     });
 
-    if (Docking.DockManager.settings.showAppsAtTop)
-      this._dashContainer.insert_child_below(this._showAppsIcon, null);
-    else
-      this._dashContainer.insert_child_above(this._showAppsIcon, null);
+    this._box = new St.BoxLayout({
+      vertical: !this._isHorizontal,
+      clip_to_allocation: false,
+      ...!this._isHorizontal ? {layout_manager: new DockDashIconsVerticalLayout()} : {},
+      x_align: this._isHorizontal ? Clutter.ActorAlign.CENTER : Clutter.ActorAlign.START,
+      y_align: this._isHorizontal ? Clutter.ActorAlign.CENTER : Clutter.ActorAlign.START,
+      y_expand: !this._isHorizontal,
+      x_expand: this._isHorizontal,
+    });
+    this._box._delegate = this;
+    this._box.add_child(this._showAppsIcon);
 
+    this._dashContainer.add_actor(this._scrollView);
+    this._scrollView.add_actor(this._box);
 
     this._background = new St.Widget({
       style_class: 'dash-background',
@@ -198,16 +192,16 @@ var DockDash = GObject.registerClass({
       x_expand: !this._isHorizontal,
     });
 
-    const sizerBox = new Clutter.Actor();
-    sizerBox.add_constraint(new Clutter.BindConstraint({
-      source: this._isHorizontal ? this._showAppsIcon.icon : this._dashContainer,
-      coordinate: Clutter.BindCoordinate.HEIGHT,
-    }));
-    sizerBox.add_constraint(new Clutter.BindConstraint({
-      source: this._isHorizontal ? this._dashContainer : this._showAppsIcon.icon,
-      coordinate: Clutter.BindCoordinate.WIDTH,
-    }));
-    this._background.add_child(sizerBox);
+    // const sizerBox = new Clutter.Actor();
+    // sizerBox.add_constraint(new Clutter.BindConstraint({
+    //   source: this._isHorizontal ? this._showAppsIcon.icon : this._dashContainer,
+    //   coordinate: Clutter.BindCoordinate.HEIGHT,
+    // }));
+    // sizerBox.add_constraint(new Clutter.BindConstraint({
+    //   source: this._isHorizontal ? this._dashContainer : this._showAppsIcon.icon,
+    //   coordinate: Clutter.BindCoordinate.WIDTH,
+    // }));
+    // this._background.add_child(sizerBox);
 
     this.add_child(this._background);
     this.add_child(this._dashContainer);

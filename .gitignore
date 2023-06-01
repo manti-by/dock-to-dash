@@ -5,7 +5,7 @@
 gschemas.compiled
 dash-to-dock@micxgx.gmail.com.zip
 *.mo
-po/dashtodock.pot
+po/docktodash.pot
 stylesheet.css
 Settings.ui.h
 _build

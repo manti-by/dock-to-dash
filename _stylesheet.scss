@@ -2,7 +2,7 @@
 $base_padding: 6px;
 $base_margin: 4px;
 
-$base_border_radius: 8px;
+$base_border_radius: 2px;
 $modal_radius: $base_border_radius * 2;
 
 // From https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/43.0/data/theme/gnome-shell-sass/_colors.scss
@@ -32,7 +32,7 @@ $dock_fixed_inner_margin: $dock_side_margin;
 $dock_icons_distance: 4px;
 
 @function shrink($val) {
-    @return round($val / 4);
+    @return round($val / 2);
 }
 
 @function shrink_light($val) {
@@ -120,7 +120,7 @@ $dock_icons_distance: 4px;
 @mixin padded-dash-edge-items($side, $padding) {
     @each $child_pos in first, last {
         > :#{$child_pos}-child {
-            // Use this instead of #dashtodockDashScrollview rule to apply the
+            // Use this instead of #docktodashDashScrollview rule to apply the
             // padding via the last app-icon item
             //.dash-item-container:#{$child_pos}-child .app-well-app,
             .show-apps {
@@ -128,7 +128,7 @@ $dock_icons_distance: 4px;
             }
         }
 
-        #dashtodockDashScrollview:#{$child_pos}-child {
+        #docktodashDashScrollview:#{$child_pos}-child {
             @include padded-edge-child($child_pos, $side, $padding);
         }
     }
@@ -185,7 +185,7 @@ $dock_style_modes: [null, shrink, extended, extended-shrink];
                 margin-#{$side}: $side_margin;
             }
 
-            #dashtodockDashContainer {
+            #docktodashDashContainer {
                 padding: if($is_extended, 0, $padding);
                 padding-#{$side}: 0;
                 padding-#{opposite($side)}: 0;
@@ -252,7 +252,7 @@ $dock_style_modes: [null, shrink, extended, extended-shrink];
         $is_shrink: str-index(#{$style_mode}, shrink) !=null;
         $is_extended: str-index(#{$style_mode}, extended) !=null;
 
-        #dashtodockContainer.#{$side} {
+        #docktodashContainer.#{$side} {
             $parameters: (
                 is_shrink: $is_shrink,
                 is_extended: $is_extended,
@@ -308,46 +308,46 @@ $dock_style_modes: [null, shrink, extended, extended-shrink];
         }
     }
 
-    .dashtodock-app-well-preview-menu-item.#{$side} {
+    .docktodash-app-well-preview-menu-item.#{$side} {
         @include set-internal-children-property($side, padding,
             0.5em, 0.5em, 1em);
     }
 }
 
-#dashtodockContainer.top.shrink #dash .dash-background {
+#docktodashContainer.top.shrink #dash .dash-background {
     margin-top: 4px;
     margin-bottom: 0;
 }
 
-#dashtodockContainer.straight-corner #dash .dash-background,
-#dashtodockContainer.shrink.straight-corner #dash .dash-background {
+#docktodashContainer.straight-corner #dash .dash-background,
+#docktodashContainer.shrink.straight-corner #dash .dash-background {
     border-radius: 0px;
 }
 
 /* Scrollview style */
-.bottom #dashtodockDashScrollview,
-.top #dashtodockDashScrollview {
+.bottom #docktodashDashScrollview,
+.top #docktodashDashScrollview {
     -st-hfade-offset: 24px;
 }
 
-.left #dashtodockDashScrollview,
-.right #dashtodockDashScrollview {
+.left #docktodashDashScrollview,
+.right #docktodashDashScrollview {
     -st-vfade-offset: 24px;
 }
 
-#dashtodockContainer.dashtodock #dash .dash-background {
+#docktodashContainer.docktodash #dash .dash-background {
     background: $dash_background_color;
 }
 
-#dashtodockContainer.dashtodock .progress-bar {
+#docktodashContainer.docktodash .progress-bar {
     /* Customization of the progress bar style, e.g.:
       -progress-bar-background: rgba(0.8, 0.8, 0.8, 1);
       -progress-bar-border: rgba(0.9, 0.9, 0.9, 1);
     */
 }
 
-#dashtodockContainer.top #dash .placeholder,
-#dashtodockContainer.bottom #dash .placeholder {
+#docktodashContainer.top #dash .placeholder,
+#docktodashContainer.bottom #dash .placeholder {
     width: 32px;
     height: 1px;
 }
@@ -356,7 +356,7 @@ $dock_style_modes: [null, shrink, extended, extended-shrink];
  * This is applied to a dummy actor. Only the alpha value for the background and border color
  * and the transition-duration are used
  */
-#dashtodockContainer.dummy-opaque {
+#docktodashContainer.dummy-opaque {
     background-color: rgba(0, 0, 0, 0.8);
     border-color: rgba(0, 0, 0, 0.4);
     transition-duration: 300ms;
@@ -366,19 +366,19 @@ $dock_style_modes: [null, shrink, extended, extended-shrink];
  * This is applied to a dummy actor. Only the alpha value for the background and border color
  * and the transition-duration are used
  */
-#dashtodockContainer.dummy-transparent {
+#docktodashContainer.dummy-transparent {
     background-color: rgba(0, 0, 0, 0.2);
     border-color: rgba(0, 0, 0, 0.1);
     transition-duration: 500ms;
 }
 
-#dashtodockContainer .number-overlay {
+#docktodashContainer .number-overlay {
     color: rgba(255, 255, 255, 1);
     background-color: rgba(0, 0, 0, 0.8);
     text-align: center;
 }
 
-#dashtodockContainer .notification-badge {
+#docktodashContainer .notification-badge {
     color: rgba(255, 255, 255, 1);
     background-color: rgba(255, 0, 0, 1);
     padding: 0.2em 0.5em;
@@ -388,27 +388,27 @@ $dock_style_modes: [null, shrink, extended, extended-shrink];
     margin: 2px;
 }
 
-#dashtodockPreviewSeparator.popup-separator-menu-item-horizontal {
+#docktodashPreviewSeparator.popup-separator-menu-item-horizontal {
     width: 1px;
     height: auto;
     border-right-width: 1px;
     margin: 32px 0px;
 }
 
-#dashtodockContainer .metro .overview-icon {
+#docktodashContainer .metro .overview-icon {
     border-radius: 0px;
 }
 
 @for $i from 2 through 4 {
-    #dashtodockContainer.bottom .metro.running#{$i}.focused,
-    #dashtodockContainer.top .metro.running#{$i}.focused {
+    #docktodashContainer.bottom .metro.running#{$i}.focused,
+    #docktodashContainer.top .metro.running#{$i}.focused {
         background-image: url("./media/highlight_stacked_bg.svg");
         background-position: 0px 0px;
         background-size: contain;
     }
 
-    #dashtodockContainer.left .metro.running#{$i}.focused,
-    #dashtodockContainer.right .metro.running#{$i}.focused {
+    #docktodashContainer.left .metro.running#{$i}.focused,
+    #docktodashContainer.right .metro.running#{$i}.focused {
         background-image: url("./media/highlight_stacked_bg_h.svg");
         background-position: 0px 0px;
         background-size: contain;
